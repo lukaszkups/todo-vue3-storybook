@@ -1,0 +1,1 @@
+export const localStoragePiniaKey = 'lk-task-list'
