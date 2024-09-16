@@ -61,6 +61,20 @@ button {
       border-color: var(--color-primary-hover);
     }
   }
+
+  &:disabled {
+    background-color: #fff;
+    color: #ddd;
+    border-color: #eee;
+
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      background-color: #fff;
+      color: #ddd;
+      border-color: #eee;
+    }
+  }
 }
 
 input,
@@ -71,8 +85,55 @@ select {
   border-radius: 5px;
   border: 1px solid #999;
   outline: none;
+  box-sizing: border-box;
 
   &:focus {
     border-color: var(--color-primary);
   }
+
+  &:disabled {
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      background-color: #eee;
+      color: #ddd;
+    }
+  }
+}
+
+textarea {
+  min-width: 100%;
+}
+
+// Animations
+
+@keyframes bounce {
+  0% { transform:translateY(0%); opacity: 0; }
+  50% { transform:translateY(-5%); }
+  100% { transform:translateY(0%); opacity: 100%; }
+}
+
+.animation-bounce {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0%); }
+  25% { transform: translateX(-5%); }
+  50% { transform: translateX(5%); }
+  75% { transform: translateX(-5%); }
+  100% { transform: translateX(0%); }
+}
+
+.animation-shake {
+  animation: shake 0.3s ease;
+}
+
+@keyframes submit {
+  0% { transform: translateY(0%); opacity: 1; visibility: visible; }
+  100% { transform: translateY(-20%); opacity: 0; visibility: hidden; }
+}
+
+.animation-submit {
+  animation: submit 1s ease-out;
 }

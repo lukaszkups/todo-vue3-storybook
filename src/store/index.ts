@@ -14,6 +14,7 @@ export const useTaskStore = defineStore('taskStore', () => {
 
   const saveTaskList = () => {
     const tasks = JSON.stringify(taskList.value || []);
+    console.log(tasks)
     localStorage.setItem(localStoragePiniaKey, tasks);
   }
 

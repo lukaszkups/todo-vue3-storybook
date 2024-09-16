@@ -26,6 +26,8 @@
     flex: 1;
     width: 100%;
     display: flex;
+    overflow: hidden;
+    position: relative;
   }
 
   &__body + &__footer {

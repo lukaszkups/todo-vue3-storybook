@@ -15,3 +15,7 @@ export const taskStatusList = [
     label: 'taskStatus.completed'
   }
 ]
+
+export const getTodaysDate = () => {
+  return new Intl.DateTimeFormat('en-GB', { month: '2-digit', day: '2-digit', year: 'numeric' }).format(Date.now());
+}

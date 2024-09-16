@@ -1,9 +1,11 @@
 <template>
-  <TaskItem 
-    v-for="task in tasks"
-    :key="task.id"
-    :task="task"
-  />
+  <div class="task-item-list">
+    <TaskItem 
+      v-for="(task, index) in tasks"
+      :key="`${task.id}-${index}`"
+      :task="task"
+    />
+  </div>
 </template>
 <script setup lang="ts">
 import { computed, onBeforeMount } from 'vue';

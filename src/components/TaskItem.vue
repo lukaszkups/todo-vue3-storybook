@@ -1,14 +1,14 @@
 <template>
   <Card class="task-item">
-    <template>
+    <template #default>
       <div class="task-item__title">
-        {{ task.title }}
+        {{ props.task.title }}
       </div>
       <div class="task-item__description">
-        {{ task.description }}
+        {{ props.task.description }}
       </div>
       <div class="task-item__due-date">
-        {{ task.dueDate }}
+        {{ props.task.dueDate }}
       </div>
       <div class="task-item__status">
         {{ humanReadableStatus }}
@@ -21,6 +21,7 @@ import { computed, PropType } from 'vue';
 import { Task } from '../types';
 import { useI18n } from 'vue-i18n'
 import Card from './Card.vue';
+import { taskStatusList } from '../helpers/constants';
 
 const { t } = useI18n();
 
@@ -31,5 +32,20 @@ const props = defineProps({
   }
 });
 
-const humanReadableStatus = computed(() => t(`taskStatus.${props.task.status}`))
+const taskStatusTranslationMapping = taskStatusList.map((item) => item.label);
+
+const humanReadableStatus = computed(() => t(taskStatusTranslationMapping[props.task.status]))
 </script>
+<style lang="scss">
+.task-item {
+  margin-bottom: 20px;
+
+  &__description {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+</style>
