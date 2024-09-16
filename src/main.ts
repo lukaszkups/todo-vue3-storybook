@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style.css'
+import './style.scss'
 import App from './App.vue'
 import en from './i18n/en.json';
 import pl from './i18n/pl.json';

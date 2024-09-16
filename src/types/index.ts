@@ -8,7 +8,7 @@ export interface Task {
   title: string;
   description: string;
   status: TaskStatus;
-  due_date: string;
+  dueDate: string;
 }
 
 export interface SavedTask extends Task {

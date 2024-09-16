@@ -1,3 +1,25 @@
 {
-  "title": "Task Manager"
+  "title": "Task Manager",
+  "taskStatus": {
+    "pending": "Pending",
+    "inProgress": "In Progress",
+    "completed": "Completed"
+  },
+  "task": {
+    "title": "Title",
+    "description": "Description",
+    "status": "Status",
+    "dueDate": "Due date"
+  },
+  "button": {
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "reset": "Reset"
+  },
+  "deleteModal": {
+    "confirmation": "Are you sure?"
+  }
 }
