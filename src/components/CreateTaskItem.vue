@@ -1,5 +1,6 @@
 <template>
   <Card 
+    class="task-item--create"
     :class="dynamicClass"
   >
     <template #default>
@@ -60,7 +61,7 @@ const dynamicClass= ref('task-item animation-bounce');
 
 const canSaveTask = computed(() => {
   return !!title.value.length
-})
+});
 
 const onReset = () => {
   resetForm();
@@ -99,8 +100,16 @@ const onSave = async () => {
 </script>
 <style lang="scss">
 .task-item {
-  .card__body {
-    flex-direction: column;
+
+  &--create {
+    .card__body {
+      flex-direction: column;
+    }
+  }
+
+  &--cancel {
+    background-color: #fff;
+    color: #000;
   }
 
   &__input-wrapper {

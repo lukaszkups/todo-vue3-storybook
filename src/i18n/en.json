@@ -17,7 +17,8 @@
     "delete": "Delete",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "reset": "Reset"
+    "reset": "Reset",
+    "addTask": "Add task"
   },
   "deleteModal": {
     "confirmation": "Are you sure?"

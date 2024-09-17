@@ -40,6 +40,10 @@ const humanReadableStatus = computed(() => t(taskStatusTranslationMapping[props.
 .task-item {
   margin-bottom: 20px;
 
+  .card__body {
+    flex-direction: row;
+  }
+
   &__description {
     display: none;
   }

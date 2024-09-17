@@ -1,15 +1,22 @@
 <template>
   <div class="main-wrapper">
     <h1>{{ t('title') }}</h1>
+    <button 
+      class="create-task-button"
+      :class="createTaskButtonCssClass"
+      @click="showCreateTaskForm"
+    >
+      {{ toggleShowCreateFormLabel }}
+    </button>
     <CreateTaskItem 
-      v-if="showCreateTaskForm"
+      v-if="isCreateTaskFormVisible"
       @created-task="onCreatedTask"
     />
     <TaskList v-else />
   </div>
 </template>
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
 import CreateTaskItem from './components/CreateTaskItem.vue';
 import TaskList from './components/TaskList.vue';
 import { useI18n } from 'vue-i18n'
@@ -18,9 +25,15 @@ import { useTaskStore } from './store';
 const { t } = useI18n();
 const store = useTaskStore();
 
-const showCreateTaskForm = ref(true);
+const isCreateTaskFormVisible = ref(false);
 const onCreatedTask = () => {
-  showCreateTaskForm.value = false;
+  isCreateTaskFormVisible.value = false;
+}
+const toggleShowCreateFormLabel = computed(() => isCreateTaskFormVisible.value ? t('button.cancel') : t('button.addTask'));
+const createTaskButtonCssClass = computed(() => isCreateTaskFormVisible.value ? '' : 'primary');
+
+const showCreateTaskForm = () => {
+  isCreateTaskFormVisible.value = !isCreateTaskFormVisible.value;
 }
 
 onBeforeMount(() => {
@@ -28,5 +41,7 @@ onBeforeMount(() => {
 });
 </script>
 <style lang="scss">
-
+.create-task-button {
+  margin-bottom: 1em;
+}
 </style>

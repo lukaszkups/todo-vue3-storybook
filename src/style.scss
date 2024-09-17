@@ -14,8 +14,6 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-color: #eee;
@@ -23,7 +21,8 @@ body {
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
+  line-height: 1.1em;
+  margin-top: 0.25em;
 }
 
 #app {
@@ -119,9 +118,9 @@ textarea {
 
 @keyframes shake {
   0% { transform: translateX(0%); }
-  25% { transform: translateX(-5%); }
-  50% { transform: translateX(5%); }
-  75% { transform: translateX(-5%); }
+  25% { transform: translateX(-2%); }
+  50% { transform: translateX(2%); }
+  75% { transform: translateX(-2%); }
   100% { transform: translateX(0%); }
 }
 
