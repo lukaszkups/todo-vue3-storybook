@@ -4,6 +4,7 @@
     :class="dynamicClass"
   >
     <template #default>
+      <h2>{{ t('task.create') }}</h2>
       <div class="task-item__input-wrapper">
         <input 
           v-model="title" 
@@ -95,15 +96,23 @@ const onSave = async () => {
     resetForm();
     dynamicClass.value = 'task-item task-item--hidden';
     emit('createdTask');
-  }, 1000);
+  }, 700);
 }
 </script>
 <style lang="scss">
 .task-item {
 
   &--create {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    h2 {
+      margin-top: 0;
+    }
+
     .card__body {
-      flex-direction: column;
+      flex-direction: column !important;
     }
   }
 
@@ -128,6 +137,10 @@ const onSave = async () => {
   &--hidden {
     display: none;
     opacity: 0;
+  }
+
+  &.animation-submit {
+    animation-duration: 0.71s;
   }
 }
 </style>

@@ -12,15 +12,15 @@
       v-if="isCreateTaskFormVisible"
       @created-task="onCreatedTask"
     />
-    <TaskList v-else />
+    <TaskListsWrapper v-else />
   </div>
 </template>
 <script setup lang="ts">
 import { computed, onBeforeMount, ref } from 'vue';
-import CreateTaskItem from './components/CreateTaskItem.vue';
-import TaskList from './components/TaskList.vue';
 import { useI18n } from 'vue-i18n'
 import { useTaskStore } from './store';
+import CreateTaskItem from './components/CreateTaskItem.vue';
+import TaskListsWrapper from './components/TaskListsWrapper.vue';
 
 const { t } = useI18n();
 const store = useTaskStore();
