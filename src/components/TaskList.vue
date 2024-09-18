@@ -26,11 +26,5 @@ defineProps({
 <style lang="scss">
 .task-item-list {
   min-height: 100vh;
-  
-  &:hover {
-    h2 {
-      text-decoration: underline;
-    }
-  }
 }
 </style>

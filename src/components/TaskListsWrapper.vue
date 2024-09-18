@@ -1,6 +1,6 @@
 <template>
   <div class="task-list-wrapper">
-    <div class="task-list-column">
+    <div class="task-list-column task-list--pending">
       <TaskList 
         :title="t('taskStatus.pending')"
         :items="pendingTasks"
@@ -12,7 +12,7 @@
         :items="inProgressTasks"
       />
     </div>
-    <div class="task-list-column">
+    <div class="task-list-column task-list--completed">
       <TaskList 
         :title="t('taskStatus.completed')"
         :items="completedTasks"
@@ -54,14 +54,38 @@ watch(tasks, () => {
       completedTasks.value.push(task);
     }
   });
+}, {
+  deep: true,
 })
 </script>
 <style lang="scss">
 .task-list-wrapper {
   display: flex;
+  gap: 20px;
 
   .task-list-column {
     flex: 1;
-  }  
+
+    &.task-list--pending {
+      .tag {
+        background-color: #ddd;
+        color: #000;
+      }
+    }
+
+    &.task-list--completed {
+      .task-item {
+        opacity: 0.75;
+
+        .tag {
+          background-color: #000;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 </style>

@@ -6,6 +6,7 @@ import { localStoragePiniaKey } from "../helpers/constants";
 export const useTaskStore = defineStore('taskStore', () => {
   const idCounter = ref(0);
   const taskList: Ref<SavedTask[]> = ref([]);
+  const editableTaskId = ref<number | null>(null);
 
   const loadTaskList = () => {
     const tasks = JSON.parse(localStorage.getItem(localStoragePiniaKey) || '[]');
@@ -14,7 +15,6 @@ export const useTaskStore = defineStore('taskStore', () => {
 
   const saveTaskList = () => {
     const tasks = JSON.stringify(taskList.value || []);
-    console.log(tasks)
     localStorage.setItem(localStoragePiniaKey, tasks);
   }
 
@@ -29,7 +29,8 @@ export const useTaskStore = defineStore('taskStore', () => {
     }, taskList.value[0]); 
     idCounter.value = highestId.id + 1;
   }
-
+  updateIdCounter();
+  
   const addTask = (newItem: Task) => {
     const task = {
       ...newItem,
@@ -60,12 +61,18 @@ export const useTaskStore = defineStore('taskStore', () => {
     }
   }
 
+  const selectEditTask = (taskId: number | null) => {
+    editableTaskId.value = taskId;
+  }
+
   return {
     taskList,
+    editableTaskId,
     loadTaskList,
     saveTaskList,
     addTask,
     removeTask,
     updateTask,
+    selectEditTask,
   }
 });

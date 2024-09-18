@@ -2,24 +2,25 @@
   <div class="main-wrapper">
     <h1>{{ t('title') }}</h1>
     <button 
-      class="create-task-button"
-      :class="createTaskButtonCssClass"
-      @click="showCreateTaskForm"
+      class="form-task-button primary"
+      :disabled="canShowTaskForm"
+      @click="showCreateForm"
     >
-      {{ toggleShowCreateFormLabel }}
+      {{ t('button.addTask') }}
     </button>
-    <CreateTaskItem 
-      v-if="isCreateTaskFormVisible"
+    <TaskItemForm 
+      v-if="canShowTaskForm"
       @created-task="onCreatedTask"
+      @form-cancel="onFormCancel"
     />
-    <TaskListsWrapper v-else />
+    <TaskListsWrapper />
   </div>
 </template>
 <script setup lang="ts">
 import { computed, onBeforeMount, ref } from 'vue';
 import { useI18n } from 'vue-i18n'
 import { useTaskStore } from './store';
-import CreateTaskItem from './components/CreateTaskItem.vue';
+import TaskItemForm from './components/TaskItemForm.vue';
 import TaskListsWrapper from './components/TaskListsWrapper.vue';
 
 const { t } = useI18n();
@@ -28,12 +29,18 @@ const store = useTaskStore();
 const isCreateTaskFormVisible = ref(false);
 const onCreatedTask = () => {
   isCreateTaskFormVisible.value = false;
+  store.loadTaskList();
 }
-const toggleShowCreateFormLabel = computed(() => isCreateTaskFormVisible.value ? t('button.cancel') : t('button.addTask'));
-const createTaskButtonCssClass = computed(() => isCreateTaskFormVisible.value ? '' : 'primary');
+const editableTaskId = computed(() => store.editableTaskId);
+const canShowTaskForm = computed(() => isCreateTaskFormVisible.value || editableTaskId.value !== null)
 
-const showCreateTaskForm = () => {
-  isCreateTaskFormVisible.value = !isCreateTaskFormVisible.value;
+const showCreateForm = () => {
+  store.selectEditTask(null);
+  isCreateTaskFormVisible.value = true;
+}
+
+const onFormCancel = () => {
+  isCreateTaskFormVisible.value = false;
 }
 
 onBeforeMount(() => {
@@ -41,7 +48,7 @@ onBeforeMount(() => {
 });
 </script>
 <style lang="scss">
-.create-task-button {
+.form-task-button {
   margin-bottom: 1em;
 }
 </style>

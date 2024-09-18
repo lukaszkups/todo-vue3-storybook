@@ -10,7 +10,8 @@
     "description": "Description",
     "status": "Status",
     "dueDate": "Due date",
-    "create": "Create new task"
+    "create": "Create new task",
+    "edit": "Edit task"
   },
   "button": {
     "save": "Save",
