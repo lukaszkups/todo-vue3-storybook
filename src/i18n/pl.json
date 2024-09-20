@@ -1,8 +1,29 @@
 {
-  "title": "Menedżer zadań",
+  "title": "Menedżer Zadań",
   "taskStatus": {
     "pending": "Do zrobienia",
     "inProgress": "W trakcie",
-    "completed": "Zakończony"
+    "completed": "Ukończone"
+  },
+  "task": {
+    "title": "Tytuł",
+    "description": "Opis",
+    "status": "Status",
+    "dueDate": "Termin",
+    "create": "Dodaj nowe zadanie",
+    "edit": "Edytuj zadanie",
+    "noTasks": "Brak zadań"
+  },
+  "button": {
+    "save": "Zapisz",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "confirm": "Potwierdź",
+    "cancel": "Anuluj",
+    "reset": "Resetuj",
+    "addTask": "Dodaj Zadanie"
+  },
+  "deleteModal": {
+    "confirmation": "Jesteś pewny?"
   }
 }

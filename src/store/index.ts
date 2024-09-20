@@ -30,7 +30,7 @@ export const useTaskStore = defineStore('taskStore', () => {
     idCounter.value = highestId.id + 1;
   }
   updateIdCounter();
-  
+
   const addTask = (newItem: Task) => {
     const task = {
       ...newItem,

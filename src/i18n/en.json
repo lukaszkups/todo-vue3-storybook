@@ -11,7 +11,8 @@
     "status": "Status",
     "dueDate": "Due date",
     "create": "Create new task",
-    "edit": "Edit task"
+    "edit": "Edit task",
+    "noTasks": "No tasks yet."
   },
   "button": {
     "save": "Save",

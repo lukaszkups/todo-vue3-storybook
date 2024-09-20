@@ -76,14 +76,25 @@ watch(tasks, () => {
     &.task-list--completed {
       .task-item {
         opacity: 0.75;
-
+        
+        &:hover *{
+          opacity: 1;
+        }
+        
         .tag {
           background-color: #000;
         }
+      }
+    }
+  }
+}
 
-        &:hover {
-          opacity: 1;
-        }
+@media (max-width: 730px) {
+  .task-list-wrapper {
+    flex-direction: column;
+    .task-list-column {
+      .task-item-list {
+          min-height: auto;
       }
     }
   }
